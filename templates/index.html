@@ -22,7 +22,7 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form method="post" action="{% url 'add-invoice' %}">
+         <form method="post" action="{% url 'add_invoice' %}">
             {% csrf_token %}
             <div class="modal-body">
                <div class="form-row">
@@ -107,7 +107,7 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <form method="post" action="{% url 'add-customer' %}">
+         <form method="post" action="{% url 'add_customer' %}">
             {% csrf_token %}
             <div class="modal-body">
                <div class="form-row">

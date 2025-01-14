@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<br><br><br><br>
-<h1 class="text-capitalize text-center bg-dark text-white py-3">Register a New Invoice</h1>
+<h1 class="text-capitalize text-center mx-10 bg-dark text-white"> Register a new invoice </h1>
 
 <form method="post">
+
     {% csrf_token %}
+
     <div class="form-row">
+        
         <div class="form-group col-md-12">
-            <label for="customer">Customer</label>
+            <label for="customer"> Customer </label>
             <select name="customer" class="form-control" id="customer">
-                <option>Choose the customer ...</option>
+                <option> Choose the customer ... </option>
                 {% for customer in customers %}
-                <option value="{{customer.id}}">{{forloop.counter}}.{{customer.name}}</option>
+                <option value="{{customer.id}}">{{forloop.counter}}-{{customer.name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -20,9 +22,9 @@
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="invoice">Invoice Type</label>
-            <select name="invoice-type" class="form-control" id="Invoice">
-                <option>Choose the invoice type...</option>
+            <label for="invoice"> Invoice Type </label>
+            <select name="invoice_type" class="form-control" id="invoice">
+                <option> Choose the invoice type ... </option>
                 <option value="R">RECEIPT</option>
                 <option value="P">PROFORMA INVOICE</option>
                 <option value="I">INVOICE</option>
@@ -31,46 +33,58 @@
     </div>
 
     <div id="wrapper">
+
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="article-1">#1 Item name</label>
+                <label for="article-1">#1 Item name </label>
                 <input required name="article" type="text" class="form-control" id="article-1">
             </div>
+
             <div class="form-group col-md-2">
-                <label for="qty-1">Quantity</label>
+                <label for="qty-1"> Quantity </label>
                 <input required name="qty" type="number" min="1" step="0.1" class="form-control" id="qty-1">
             </div>
+
             <div class="form-group col-md-3">
-                <label for="unit-1">Unit price</label>
-                <input required name="unit" type="number" min="1" step="0.1" class="form-control" id="unit-1" onchange="handleChangeSingleArticle(this.id)">
+                <label for="unit-1"> Unit Price </label>
+                <input required name="unit" type="number" min="1" step="0.1" onchange="handleChangeSingleArticle(this.id)" class="form-control" id="unit-1">
             </div>
+
             <div class="form-group col-md-3">
-                <label for="total-a-1">Total</label>
-                <input required name="total-a" type="number" min="1" step="0.1" readonly class="form-control" id="total-a-1">
+                <label for="total-a-1"> Total </label>
+                <input required name="total-a" type="number" min="1" step="0.1" readonly class="form-control"
+                    id="total-a-1">
             </div>
+
         </div>
+
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="total">Total</label>
+            <label for="total"> Total </label>
             <input value="0" type="number" step="0.1" name="total" readonly class="form-control" id="total">
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="comment">Comments</label>
+            <label for="comment"> Comments </label>
             <textarea class="form-control" name="comment" id="comment" cols="30" rows="1"></textarea>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+
+    <button type="submit" class="btn btn-primary"> Save </button>
+
 </form>
 
-<br><br><br>
+<br><br>
+
 <div class="row">
-    <button id="btn-add" class="btn btn-outline-danger w-50 col-md-6">Add a new Item line</button>
-    <button id="btn-remove" class="btn btn-outline-warning w-50 col-md-6">Remove last item line</button>
+
+    <button id="btn-add" class="btn btn-outline-danger w-50 col-md-6"> Add a new item line </button>
+    <button id="btn-remove" class="btn btn-outline-warning w-50 col-md-6"> Remove last item line </button>
+
 </div>
 
 <br><br><br><br>
