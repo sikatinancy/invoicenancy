@@ -12,12 +12,11 @@ class Customer(models.Model):
     phone = models.CharField(max_length=15)  # Ajusté pour un format de numéro de téléphone
     address = models.CharField(max_length=255)  # Augmenté pour permettre des adresses plus longues
     sex = models.CharField(max_length=1, choices=SEX_TYPES)
-   
     age = models.CharField(max_length=10)  # Modifié pour être un CharField
     city = models.CharField(max_length=100)  # Augmenté pour des noms de ville plus longs
     zip_code = models.CharField(max_length=20)  # Ajusté pour différents formats de codes postaux
     created_date = models.DateTimeField(auto_now_add=True)
-    saved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  
+    save_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  
 
     class Meta:
         verbose_name = "Client"
@@ -34,7 +33,7 @@ class Invoice(models.Model):
     )
 
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
-    saved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  
+    save_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)  
     invoice_date_time = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)  # Utilisation de Decimal pour une gestion précise
     last_updated_date = models.DateTimeField(null=True, blank=True)

@@ -6,7 +6,7 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email')  # Ajout d'une fonctionnalité de recherche
 
 class InvoiceAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'saved_by', 'invoice_date_time', 'total', 'last_updated_date', 'paid')  # Affichage des champs
+    list_display = ('customer', 'save_by', 'invoice_date_time', 'total', 'last_updated_date', 'paid')  # Affichage des champs
     list_filter = ('paid', 'invoice_date_time')  # Ajout de filtres pour faciliter la recherche
 
 class ArticleAdmin(admin.ModelAdmin):

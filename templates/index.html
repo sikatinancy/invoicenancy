@@ -31,7 +31,7 @@
                      <select name="customer" class="form-control" id="customer" required>
                         <option value="">Choose the customer ...</option>
                         {% for customer in customers %}
-                        <option value="{{ customer.id }}">{{ forloop.counter }}. {{ customer.name }}</option>
+                        <option value="{{ customer.id }}">{{ customer.name }}</option>
                         {% endfor %}
                      </select>
                   </div>
@@ -205,7 +205,7 @@
              </td>
              <td>{{ facture.get_invoice_type_display }}</td>
              <td>
-                 <a href="#" title="Detail" class="badge text-white bg-success">View</a>
+                 <a href="{% url 'view-invoices' pk=facture.pk %}" title="Detail" class="badge text-white bg-success">View</a>
                  <button type="button" data-toggle="modal" data-target="#supprimer" class="badge text-white bg-danger" title="Delete" data-id="{{ facture.id }}" data-customer="{{ facture.customer.name }}">Delete</button>
                  <button type="button" data-toggle="modal" data-target="#modifier" class="badge text-dark bg-warning" title="Modify" data-id="{{ facture.id }}" data-customer="{{ facture.customer.name }}">Modify</button>
              </td>
@@ -305,24 +305,6 @@
  {% else %}
  <p class="text-center text-white">No invoice found.</p>
  {% endif %}
- <form method="post" action="#"> <!-- Assurez-vous que l'URL corresponde à votre vue -->
-   {% csrf_token %}
-   <div class="modal-body">
-       <input name="id_modify" type="hidden" id="id_modify">
-       <label id="label_id" class="text-dark"><strong>Has this bill been paid?</strong></label><br>
-       <input type="radio" id="paid" name="modified" value="True" required>
-       <label class="text-primary" for="paid">Yes</label><br>
-       <input type="radio" id="not_paid" name="modified" value="False" required>
-       <label class="text-danger" for="not_paid">No</label><br>
-   </div>
-   <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-       <button type="submit" class="btn btn-primary">Save</button>
-   </div>
-</form>
-</div>
-</div>
-</div>
 <!-- end modal -->
 
 <!-- Delete Modal -->
